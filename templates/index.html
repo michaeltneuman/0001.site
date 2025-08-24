@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="google-adsense-account" content="ca-pub-6688801901117630">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0001.SITE | {{ page_title }}</title>
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<style>
+	body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		margin: 0;
+		background-color: #000;
+		color: #fff;
+		overflow: hidden;
+	}
+	.youtube-container {
+		display: None
+		overflow: hidden;
+		width: 95%;
+		height: 95%;
+		justify-content: center;
+		align-items: center;
+		aspect-ratio: 16/9;
+		pointer-events: none;
+	}
+	.youtube-container.visible {
+		display: block;
+	}
+	.youtube-container iframe {
+		width: 300%;
+		height: 100%;
+		margin-left: -100%;
+	}
+	.button-container {
+			margin-top: 20px;
+			z-index: 10;
+	}
+	button {
+		background-color: #ff0000;
+		color: #fff;
+		border: none;
+		padding: 10px 20px;
+		cursor: pointer;
+		font-size: 16px;
+		border-radius: 5px;
+	}
+	button:hover {
+		background-color: #cc0000;
+	}
+	.info-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+	}
+	.title {
+		position: absolute;
+		top: 16px;
+		left: 16px;
+		font-size: 18px;
+	}
+	.view-count {
+		position: absolute;
+		bottom: 16px;
+		right: 16px;
+		font-size: 18px;
+	}
+	.upload-date {
+		position: absolute;
+		bottom: 16px;
+		left: 16px;
+		font-size: 18px;
+	}
+	.shot-on {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		font-size: 18px;
+	}
+	#overlay {
+		
+	}
+
+	#overlay > span {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 37px;
+		margin: auto;
+		font-size: 2em;
+		font-weight: bold;
+		color: #FFF;
+		text-align: center;
+	}
+</style>
+    <script>
+        function changeChannel() {
+			window.location.reload();
+        }
+		window.addEventListener('load', () => {setTimeout(() => {
+            window.location.reload();
+        }, {{ video_duration }} * 1000);});
+    </script>
+</head>
+<body>
+<div class="youtube-container">
+	<iframe
+	id="video-container"
+	width="560"
+	height="315"
+	src="{{ youtube_video_url }}"
+	frameborder="0"
+	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+	referrerpolicy="strict-origin-when-cross-origin"
+	allowfullscreen=""
+	playsinline></iframe>
+</div>
+<div class="button-container">
+	<button onclick="changeChannel()">RELOAD</button>
+</div>
+<div class="info-container">
+	<div class="title"><p>{{ page_title }}</p><br><p><strong>HISTORY</strong></p>{% for video_uri in video_history %}<p>{{ video_uri }}</p>{% endfor %}</div>
+	<div class="view-count">{{ view_count }} VIEWS</div>
+	<div class="upload-date">{{ upload_date }}</div>
+	<div class="shot-on">{{ shot_on }}</div>
+</div>
+
+</body>
+</html>

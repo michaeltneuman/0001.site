@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="google-adsense-account" content="ca-pub-6688801901117630">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0001.SITE</title>
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<style>
+	body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.button-container {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+ul {
+    padding-left: 20px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+a, strong {
+    color: #ff0000;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+a:hover {
+    color: #cc0000;
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 20px;
+    }
+
+    button {
+        width: auto;
+    }
+}
+
+span {
+	pointer-events: none;
+}
+</style>
+</head>
+<body>
+	<div style="text-align:left">
+		<div><strong><a href="https://www.0001.site">0001.SITE</a></strong> contains <strong>OVER {{ "{:,}".format(num_videos_indexed-1) }} <a href="https://www.youtube.com">YOUTUBE VIDEOS</a></strong> with generic filenames</div>
+		<br>
+		<div>Explore the beauty and randomness of humanity captured across the globe</div>
+		<br>
+		<div>We have streamed <strong>{{ "{:,}".format(numvidsstreamed) }}</strong> videos so far</div>
+	</div>
+	<div class="button-container">
+		<form action="{{ url_for('index') }}" method="post">
+		<button type="submit">WATCH NOW</button></form>
+	</div>
+	<br>
+	<div class="button-container">
+		<form action="{{ url_for('old') }}" method="post">
+		<button type="submit">OLD VIDEOS</button></form>
+	</div>
+	<br>
+	<div style="text-align:left">
+	<div>Our list is curated to show you videos with:
+		<ul><li><strong>UNDER 1,000 VIEWS</strong></li><li><strong>15 SECONDS OR LESS</strong></li>
+		<li>and contains one of the following generic filenames in the video title: <strong>VID / VID_, IMG / IMG_,<br>DSC / DSC_ / DSCF / DSCI / DSCN, MVI / MVI_, MOV / MOV_, GX01, PICT, SANY, 101-, 102_</strong></li></ul></li></ul></div>
+		<br>
+		<div>This was inspired by multiple projects published on the <a href="https://news.ycombinator.com/">YCombinator forums</a> including:</div>
+		<ul>
+		<li><strong><a href="https://walzr.com/IMG_0001/" target="_blank">https://walzr.com/IMG_0001/</a></strong></li>
+		<li><strong><a href="https://ben-mini.github.io/2024/img-0416" target="_blank">https://ben-mini.github.io/2024/img-0416</a></strong></li>
+		</ul>
+		<div>The projects have even received some media coverage including:</div>
+		<ul>
+		{% for media_url in media_urls %}
+		<li>
+		  <strong><a href="{{ media_url }}" target="_blank">{{ media_url }}</a></strong>
+		</li>
+		{% endfor %}
+		</ul>
+		<br>
+	<div>This site was created by <a href="https://www.linkedin.com/in/michael-t-neuman/">Michael Neuman</a> on December 7, 2024 and was last updated on <strong>January 2, 2025</strong></div>
+	</div>
+	<span></span>
+</body>
+</html>
